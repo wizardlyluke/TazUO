@@ -859,7 +859,6 @@ namespace ClassicUO.Game.Managers
                             currentValues.Add(maxCurrentValue.Value);
                         var originalStringWithoutColor = Regex.Replace(property.OriginalString, @"\/c\[#.{6}\]|(\/cd)", "", RegexOptions.IgnoreCase);
 
-                        // TODO: Only show the current and max if they are both defined, if only current is defined then show that.
                         statsTooltips += string.Format
                             (
                                 overrideData.FormattedText, 
@@ -885,8 +884,9 @@ namespace ClassicUO.Game.Managers
                 {
                     var field = property.Name.Replace("+", "").Trim();
 
-                    if (field.Contains(" Damage") || field.Contains(" Damage") || field.Contains("Weapon Speed") || field.Contains("Two-handed Weapon") || field.Contains
-                            ("One-handed Weapon") || field.StartsWith("Durability"))
+                    if (field.Contains("Physical Damage") || field.Contains("Energy Damage") || field.Contains("Poison Damage") || field.Contains("Cold Damage") || field.Contains
+                            ("Weapon Speed") || field.Contains("Two-handed Weapon") || field.Contains("One-handed Weapon") || field.StartsWith("Durability") || field.EndsWith
+                            ("Range"))
                     {
                         statsTooltips += $"/c[#999999]{property.OriginalString.Replace("/cd", "")}\n";
                     }
@@ -927,7 +927,7 @@ namespace ClassicUO.Game.Managers
 
                             var currentValueString = currentValues.Count > 0 ? $" ({string.Join("/", currentValues)})" : "";
 
-                            var color = GetColorRamp(property.FirstValue / statRange.Value.Item2, "#00FF00", .08, "#FFFF00");
+                            var color = GetColorRamp(property.FirstValue / statRange.Value.Item2, "#FFFFFF", .1, "#FFFF00");
                             statsTooltips += $"/c[{color}]{transformedOriginalString.Replace("/cd", "")}/c[#999999] / {statRange.Value.Item2} {currentValueString}\n";
                         }
                         else

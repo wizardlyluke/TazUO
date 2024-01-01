@@ -785,6 +785,8 @@ namespace ClassicUO.Game.Managers
                 return null;
             
             var statsTooltips = "";
+            if (EventSink.PreProcessTooltip != null)
+                EventSink.PreProcessTooltip(ref itemPropertiesData);
 
             var isInsured = itemPropertiesData.RawData.Contains("Insured");
             var isBlessed = itemPropertiesData.RawData.Contains("Blessed");
@@ -975,6 +977,11 @@ namespace ClassicUO.Game.Managers
 
             tooltip += singleStatRow + "\n";
             tooltip += statsTooltips;
+
+            if (EventSink.PostProcessTooltip != null)
+            {
+                EventSink.PostProcessTooltip(ref tooltip);
+            }
 
             return tooltip;
         }

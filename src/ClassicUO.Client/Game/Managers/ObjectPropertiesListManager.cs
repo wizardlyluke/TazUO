@@ -323,20 +323,21 @@ namespace ClassicUO.Game.Managers
             public SinglePropertyData(string line)
             {
                 OriginalString = line;
+                
+                // Replace /c[
+                var sanitizedLine = Regex.Replace(line, @"\/c\[#.{6}\]|(\/cd)", "", RegexOptions.IgnoreCase).Trim(' ', '(', ')');
 
                 string pattern = @"(-?\d+(\.)?(\d+)?)";
-                MatchCollection matches = Regex.Matches(line, pattern, RegexOptions.CultureInvariant);
+                MatchCollection matches = Regex.Matches(sanitizedLine, pattern, RegexOptions.CultureInvariant);
 
-                Match nameMatch = Regex.Match(line, @"(\D+)");
+                Match nameMatch = Regex.Match(sanitizedLine, @"(\D+)");
                 if (nameMatch.Success)
                 {
                     Name = nameMatch.Value;
-                    //Name = Regex.Replace(Name, "/c[\"?'?(?<color>.*?)\"?'?]", "", RegexOptions.Multiline | RegexOptions.IgnoreCase);
-                    Name = Name.Replace("/cd", "");
                 }
 
                 if (Name.Length < 1)
-                    Name = line;
+                    Name = sanitizedLine;
 
                 if (matches.Count > 0)
                 {

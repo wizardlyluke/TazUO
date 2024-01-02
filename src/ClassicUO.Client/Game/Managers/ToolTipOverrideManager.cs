@@ -749,7 +749,7 @@ namespace ClassicUO.Game.Managers
                 output.Add("NS");
                 propertyStatsLookup.Remove("Night Sight");
             }
-            
+
             foreach(var singleStat in SingleStats)
             {
                 if (propertyStatsLookup.ContainsKey(singleStat))
@@ -765,6 +765,13 @@ namespace ClassicUO.Game.Managers
                 output.Add($"{stones} {(stones == 1 ? "Stone" : "Stones")}");
                 propertyStatsLookup.Remove("Weight:");
             }
+            
+            if (propertyStatsLookup.ContainsKey("Imbued"))
+            {
+                output.Add(propertyStatsLookup["Imbued"].OriginalString);
+                propertyStatsLookup.Remove("Imbued");
+            }
+
             
             return (string.Join(", ", output), propertyStatsLookup.Values.ToList());
         }
@@ -790,7 +797,9 @@ namespace ClassicUO.Game.Managers
 
             var isInsured = itemPropertiesData.RawData.Contains("Insured");
             var isBlessed = itemPropertiesData.RawData.Contains("Blessed");
-            var propertyStatsLookup = itemPropertiesData.singlePropertyData.ToDictionary(x => x.Name.Trim(), x => x);
+            
+            var propertyStatsLookup = itemPropertiesData.singlePropertyData
+                                                        .ToDictionary(x => x.Name.Trim(), x => x);
             var (singleStatRow, singlePropertyData) = BuildSingleStatsRow(propertyStatsLookup);
             
             var valueTargets = new List<double>();

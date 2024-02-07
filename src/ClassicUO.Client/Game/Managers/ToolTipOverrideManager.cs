@@ -454,12 +454,17 @@ namespace ClassicUO.Game.Managers
 
                                     break;
                             }
+
                         }
                     }
                 );
 
                 t.SetApartmentState(ApartmentState.STA);
                 t.Start();
+            }
+            else
+            {
+                GameActions.Print("This feature is not currently supported on Unix.", 32);
             }
         }
 

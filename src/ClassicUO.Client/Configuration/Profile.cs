@@ -142,6 +142,7 @@ namespace ClassicUO.Configuration
         public bool HighlightMobilesByPoisoned { get; set; } = true;
         public bool HighlightMobilesByInvul { get; set; } = true;
         public bool ShowMobilesHP { get; set; }
+        public bool ShowTargetIndicator { get; set; }
         public int MobileHPType { get; set; }     // 0 = %, 1 = line, 2 = both
         public int MobileHPShowWhen { get; set; } // 0 = Always, 1 - <100%
         public bool DrawRoofs { get; set; } = true;
@@ -231,7 +232,7 @@ namespace ClassicUO.Configuration
         public bool DisableCtrlQWBtn { get; set; }
         public bool DisableAutoMove { get; set; }
         public bool EnableDragSelect { get; set; }
-        public int DragSelectModifierKey { get; set; } // 0 = none, 1 = control, 2 = shift
+        public int DragSelectModifierKey { get; set; } // 0 = none, 1 = control, 2 = shift, 3 = alt
         public int DragSelect_PlayersModifier { get; set; } = 0;
         public int DragSelect_MonstersModifier { get; set; } = 0;
         public int DragSelect_NameplateModifier { get; set; } = 0;
@@ -353,6 +354,7 @@ namespace ClassicUO.Configuration
         public bool WorldMapAllowPositionalTarget { get; set; } = true;
 
         public int AutoFollowDistance { get; set; } = 2;
+        public bool DisableAutoFollowAlt { get; set; } = false;
         [JsonConverter(typeof(Point2Converter))] public Point ResizeJournalSize { get; set; } = new Point(410, 350);
         public bool FollowingMode { get; set; } = false;
         public uint FollowingTarget { get; set; }

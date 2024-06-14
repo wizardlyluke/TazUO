@@ -100,6 +100,7 @@ namespace ClassicUO.Configuration
             public string SharedNone { get; set; } = "None";
             public string SharedShift { get; set; } = "Shift";
             public string SharedCtrl { get; set; } = "Ctrl";
+            public string SharedAlt { get; set; } = "Alt";
 
             #region General->General
             public string HighlightObjects { get; set; } = "Highlight objects under cursor";
@@ -127,6 +128,7 @@ namespace ClassicUO.Configuration
 
             #region General->Mobiles
             public string ShowMobileHP { get; set; } = "Show mobile's HP";
+            public string ShowTargetIndicator { get; set; } = "Show Target Indicator";
             public string MobileHPType { get; set; } = "Type";
             public string HPTypePerc { get; set; } = "Percentage";
             public string HPTypeBar { get; set; } = "Bar";
@@ -482,6 +484,7 @@ namespace ClassicUO.Configuration
             public string HiddenPlayerHue { get; set; } = "Hidden player hue";
             public string RegularPlayerOpacity { get; set; } = "Regular player opacity";
             public string AutoFollowDistance { get; set; } = "Auto follow distance";
+            public string DisableAutoFollow { get; set; } = "Disable alt click to auto follow";
             public string DisableMouseInteractionsForOverheadText { get; set; } = "Disable mouse interactions for overhead text";
             public string OverridePartyMemberHues { get; set; } = "Override party member body hues with friendly hue";
             #endregion
@@ -516,7 +519,6 @@ namespace ClassicUO.Configuration
             public string PlayerOffsetY { get; set; } = "Player Offset Y";
             public string UseLandTexturesWhereAvailable { get; set; } = "Use land textures where available(Experimental)";
             public string SOSGumpID { get; set; } = "SOS Gump ID";
-            public string UseGumpClosingAnims { get; set; } = "Enable gump closing animation";
             #endregion
 
             #region Tooltips
